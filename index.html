@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>alice lourenco</title>
+  <meta name="description" content="alice lourenco: cs student at unc-chapel hill building software that helps people learn.">
+  <meta property="og:title" content="alice lourenco">
+  <meta property="og:description" content="cs student at unc-chapel hill building software that helps people learn.">
+  <meta property="og:url" content="https://alicedsal.github.io/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23c2410c'/><text x='50' y='70' font-family='system-ui,sans-serif' font-size='64' font-weight='700' fill='white' text-anchor='middle'>a</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">skip to content</a>
+
+  <header class="hero">
+    <p class="eyebrow">hi, i'm</p>
+    <h1>alice lourenco</h1>
+    <p class="lede">
+      cs student at unc-chapel hill, minor in education. i build software that helps people learn,
+      usually with a cup of chicken noodles next to the keyboard.
+    </p>
+    <p class="status">
+      <span class="dot" aria-hidden="true"></span>
+      looking for summer 2027 internships · based in chapel hill, nc · open to relocation
+    </p>
+    <nav class="links" aria-label="contact">
+      <a href="https://github.com/alicedsal">github</a>
+      <a href="https://linkedin.com/in/alice-lourenco">linkedin</a>
+      <a href="mailto:arau@unc.edu">email</a>
+      <a class="primary" href="assets/alice_lourenco_resume.pdf">resume ↗</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section aria-labelledby="projects-title">
+      <h2 id="projects-title">projects</h2>
+
+      <article class="card">
+        <div class="card-head">
+          <h3><a href="https://github.com/alicedsal/cupinudous">cupinudous</a></h3>
+          <span class="badge">in progress · sep 2026 –</span>
+        </div>
+        <p>
+          a web app that turns research-backed learning techniques into practical study steps for cs and math.
+          pick what you're struggling with, get a short plan, each step linked to the research behind it.
+        </p>
+        <ul>
+          <li>rag pipeline with the claude api and pgvector, grounding study steps in cited open-access research</li>
+          <li>custom cuda kernels for gpu-accelerated similarity search, with a numpy fallback</li>
+          <li>spring boot + fastapi microservices, docker compose, github actions ci</li>
+        </ul>
+        <p class="tags">java · spring boot · python · fastapi · cuda · postgresql · claude api</p>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <h3><a href="https://github.com/alicedsal/catch-fever">fever</a></h3>
+          <span class="badge">in progress · aug 2026 –</span>
+        </div>
+        <p>
+          a cross-platform dating app for unc students that matches on personality, not looks,
+          with weekly match drops instead of infinite swiping.
+        </p>
+        <ul>
+          <li>signup restricted to verified @unc.edu emails via supabase auth</li>
+          <li>ai matchmaking pipeline with claude haiku 4.5, sentence-transformers and lightgbm</li>
+          <li>weekly match drops with supabase jobs and expo push notifications</li>
+        </ul>
+        <p class="tags">typescript · react native · expo · python · supabase · lightgbm</p>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <h3>programming &amp; robotics, tocando em frente ngo</h3>
+          <span class="badge">dec 2021 – nov 2024</span>
+        </div>
+        <p>
+          founded the program and led a 5-person core team, bringing tech education to underserved students in brazil.
+        </p>
+        <ul>
+          <li>designed and led programming and robotics initiatives reaching 10,300+ students</li>
+          <li>recruited and trained 60+ volunteer instructors</li>
+        </ul>
+        <p class="tags">arduino · scratch · python</p>
+      </article>
+    </section>
+
+    <section aria-labelledby="experience-title">
+      <h2 id="experience-title">experience</h2>
+      <ol class="timeline">
+        <li>
+          <div class="when">jan 2026 – now</div>
+          <div>
+            <h3>research assistant, mathematics potential lab</h3>
+            <p class="where">unc-chapel hill</p>
+            <p>coded 50+ full-text articles from 6 math and special education journals in nvivo, analyzed teacher interviews on research-backed resources, and presented 2 posters and a 50-minute talk at appalachian state university's inclusion summit.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when">jan 2022 – jul 2023</div>
+          <div>
+            <h3>tech intern</h3>
+            <p class="where">fcamara consulting and training · são paulo, brazil</p>
+            <p>built and optimized a java, spring boot and postgresql timekeeping system for 2,000+ employees: 30% more accurate timesheet data, 40% faster payroll processing.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when">jun 2020 – dec 2023</div>
+          <div>
+            <h3>research assistant</h3>
+            <p class="where">federal institute of education, science, and technology · itaporanga, brazil</p>
+            <p>built a low-cost campus access-tracking prototype with groovy, ruby on rails and arduino: 85% less manual logging, 60% lower hardware cost per unit.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="skills-title">
+      <h2 id="skills-title">skills</h2>
+      <dl class="skills">
+        <dt>languages</dt><dd>java, python, typescript, sql, cuda c++, groovy, html/css, r</dd>
+        <dt>frameworks</dt><dd>spring boot, fastapi, react native, expo, ruby on rails</dd>
+        <dt>ai/ml</dt><dd>claude api, rag, sentence-transformers, lightgbm, pandas, numpy</dd>
+        <dt>databases</dt><dd>postgresql, pgvector, supabase, mysql</dd>
+        <dt>testing &amp; devops</dt><dd>junit, pytest, playwright, git, github actions, docker</dd>
+        <dt>spoken</dt><dd>brazilian portuguese (native), english (fluent), spanish (b2)</dd>
+      </dl>
+    </section>
+  </main>
+
+  <footer>
+    <p>built with plain html &amp; css · hosted on github pages</p>
+  </footer>
+</body>
+</html>
