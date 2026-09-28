@@ -10,7 +10,7 @@ const JUMP = 240; // px; longer gaps between events are not filled in
 const COLORS = ["#8b5cf6", "#ec4899", "#22c55e", "#eab308", "#06b6d4", "#f97316"];
 const GLYPHS = "{}[]<>()/*&#;=+$_~!?:";
 // elements the trail should never draw over
-const TEXT = "h1, h2, h3, p, li, dt, dd, a, .card, .links";
+const TEXT = "h1, h2, h3, p, li, dt, dd, a, summary, .card, .links";
 
 type Cell = { x: number; y: number; color: string; glyph: string; born: number };
 

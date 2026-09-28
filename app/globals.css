@@ -66,8 +66,6 @@ h1 { margin: 4px 0 16px; font-size: clamp(36px, 8vw, 56px); line-height: 1.1; le
   font-size: 15px;
 }
 .links a:hover { border-color: var(--accent); color: var(--accent); }
-.links a.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
-.links a.primary:hover { opacity: 0.9; color: var(--bg); }
 
 /* sections */
 section { padding: 32px 0; border-top: 1px solid var(--border); }
@@ -99,16 +97,56 @@ h3 { margin: 0; font-size: 18px; line-height: 1.35; }
 }
 .tags { color: var(--muted); font-family: var(--mono); font-size: 13px; }
 
-/* experience */
+/* timelines: experience, global view, community events */
 .timeline { list-style: none; margin: 0; padding: 0; }
-.timeline li { display: grid; grid-template-columns: 150px 1fr; gap: 16px; margin-bottom: 28px; }
+.timeline > li { display: grid; grid-template-columns: 172px 1fr; gap: 16px; margin-bottom: 28px; }
 .when { color: var(--muted); font-family: var(--mono); font-size: 14px; padding-top: 2px; }
 .where { margin: 2px 0 8px; color: var(--muted); font-size: 15px; }
-.timeline p { margin-top: 0; }
+.timeline p { margin-top: 0; margin-bottom: 8px; }
+.timeline h3 a { color: var(--text); }
+.timeline h3 a:hover { color: var(--accent); }
+.plain-list { margin: 0 0 8px; padding-left: 20px; }
+.plain-list li { margin-bottom: 4px; }
+
+.link-row { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 15px; }
+
+/* global view */
+.section-intro { margin: 0 0 16px; }
+.questions { margin: 0 0 28px; padding: 0; list-style: none; }
+.questions li {
+  margin-bottom: 8px;
+  padding-left: 14px;
+  border-left: 3px solid var(--accent);
+  font-style: italic;
+}
+
+/* love = tech + education */
+.stat { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin: 0 0 16px; }
+.stat-number { font-size: clamp(40px, 9vw, 56px); font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: var(--accent); }
+.stat-label { color: var(--muted); font-size: 16px; }
+.story { margin: 0 0 16px; }
+.toggle { margin-top: 24px; }
+.toggle summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  cursor: pointer;
+  font-size: 15px;
+  list-style: none;
+}
+.toggle summary::-webkit-details-marker { display: none; }
+.toggle summary::before { content: "+"; font-family: var(--mono); color: var(--accent); }
+.toggle[open] summary::before { content: "−"; }
+.toggle summary:hover { border-color: var(--accent); color: var(--accent); }
+.toggle-body { margin-top: 16px; }
 
 /* skills */
 .skills { margin: 0; }
-.skill-row { display: grid; grid-template-columns: 150px 1fr; gap: 16px; margin-bottom: 10px; }
+.skill-row { display: grid; grid-template-columns: 172px 1fr; gap: 16px; margin-bottom: 10px; }
 .skills dt { color: var(--muted); font-family: var(--mono); font-size: 14px; padding-top: 2px; }
 .skills dd { margin: 0; }
 
@@ -116,6 +154,6 @@ footer { padding: 32px 0 48px; border-top: 1px solid var(--border); color: var(-
 
 @media (max-width: 600px) {
   .hero { padding-top: 56px; }
-  .timeline li, .skill-row { grid-template-columns: 1fr; gap: 2px; }
+  .timeline > li, .skill-row { grid-template-columns: 1fr; gap: 2px; }
   .card { padding: 16px; }
 }

@@ -1,4 +1,47 @@
-import { experience, links, profile, projects, skills } from "@/data/content";
+import {
+  communityEvents,
+  experience,
+  globalView,
+  links,
+  profile,
+  projects,
+  skills,
+  techAndEducation,
+  type Link,
+  type Project,
+} from "@/data/content";
+
+function LinkRow({ items }: { items?: Link[] }) {
+  if (!items?.length) return null;
+  return (
+    <p className="link-row">
+      {items.map((link) => (
+        <a key={link.href} href={link.href}>
+          {link.label}
+        </a>
+      ))}
+    </p>
+  );
+}
+
+function ProjectCard({ project }: { project: Project }) {
+  return (
+    <article className="card">
+      <div className="card-head">
+        <h3>{project.href ? <a href={project.href}>{project.name}</a> : project.name}</h3>
+        <span className="badge">{project.badge}</span>
+      </div>
+      <p>{project.summary}</p>
+      <ul>
+        {project.highlights.map((highlight) => (
+          <li key={highlight}>{highlight}</li>
+        ))}
+      </ul>
+      <LinkRow items={project.links} />
+      {project.tags && <p className="tags">{project.tags.join(" · ")}</p>}
+    </article>
+  );
+}
 
 export default function Home() {
   return (
@@ -17,7 +60,7 @@ export default function Home() {
         </p>
         <nav className="links" aria-label="contact">
           {links.map((link) => (
-            <a key={link.label} href={link.href} className={link.primary ? "primary" : undefined}>
+            <a key={link.label} href={link.href}>
               {link.label}
             </a>
           ))}
@@ -28,19 +71,7 @@ export default function Home() {
         <section aria-labelledby="projects-title">
           <h2 id="projects-title">projects</h2>
           {projects.map((project) => (
-            <article key={project.name} className="card">
-              <div className="card-head">
-                <h3>{project.href ? <a href={project.href}>{project.name}</a> : project.name}</h3>
-                <span className="badge">{project.badge}</span>
-              </div>
-              <p>{project.summary}</p>
-              <ul>
-                {project.highlights.map((highlight) => (
-                  <li key={highlight}>{highlight}</li>
-                ))}
-              </ul>
-              <p className="tags">{project.tags.join(" · ")}</p>
-            </article>
+            <ProjectCard key={project.name} project={project} />
           ))}
         </section>
 
@@ -51,13 +82,89 @@ export default function Home() {
               <li key={job.role + job.when}>
                 <div className="when">{job.when}</div>
                 <div>
-                  <h3>{job.role}</h3>
+                  <h3>{job.href ? <a href={job.href}>{job.role}</a> : job.role}</h3>
                   <p className="where">{job.where}</p>
                   <p>{job.summary}</p>
+                  {job.highlights && (
+                    <ul className="plain-list">
+                      {job.highlights.map((highlight) => (
+                        <li key={highlight}>{highlight}</li>
+                      ))}
+                    </ul>
+                  )}
+                  <LinkRow items={job.links} />
                 </div>
               </li>
             ))}
           </ol>
+        </section>
+
+        <section aria-labelledby="global-title">
+          <h2 id="global-title">global view</h2>
+          <p className="section-intro">{globalView.intro}</p>
+          <ul className="questions" aria-label="driving questions">
+            {globalView.questions.map((question) => (
+              <li key={question}>{question}</li>
+            ))}
+          </ul>
+          <ol className="timeline">
+            {globalView.places.map((place) => (
+              <li key={place.country + place.city}>
+                <div className="when">{place.when}</div>
+                <div>
+                  <h3>
+                    {place.city}, {place.country}
+                  </h3>
+                  <p>{place.summary}</p>
+                  {place.highlights && (
+                    <ul className="plain-list">
+                      {place.highlights.map((highlight) => (
+                        <li key={highlight}>{highlight}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section aria-labelledby="events-title">
+          <h2 id="events-title">community events</h2>
+          <ol className="timeline">
+            {communityEvents.map((event) => (
+              <li key={event.name + event.when}>
+                <div className="when">{event.when}</div>
+                <div>
+                  <h3>{event.name}</h3>
+                  <p className="where">
+                    {event.where} · {event.role}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section aria-labelledby="love-title">
+          <h2 id="love-title">love = tech + education</h2>
+          <p className="stat">
+            <span className="stat-number">{techAndEducation.impact.number}</span>
+            <span className="stat-label">{techAndEducation.impact.label}</span>
+          </p>
+          {techAndEducation.story.map((paragraph) => (
+            <p key={paragraph.slice(0, 32)} className="story">
+              {paragraph}
+            </p>
+          ))}
+          <details className="toggle">
+            <summary>see the projects behind this number ({techAndEducation.projects.length})</summary>
+            <div className="toggle-body">
+              {techAndEducation.projects.map((project) => (
+                <ProjectCard key={project.name} project={project} />
+              ))}
+            </div>
+          </details>
         </section>
 
         <section aria-labelledby="skills-title">
