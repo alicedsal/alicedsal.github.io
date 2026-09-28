@@ -184,7 +184,7 @@ export const events: EventItem[] = [
   {
     name: "behring scholars conference",
     when: "apr 2026",
-    where: "mit, boston",
+    where: "massachusetts institute of technology",
   },
 ];
 
