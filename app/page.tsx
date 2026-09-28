@@ -1,5 +1,5 @@
 import {
-  communityEvents,
+  events,
   experience,
   globalView,
   links,
@@ -7,9 +7,26 @@ import {
   projects,
   skills,
   techAndEducation,
+  writing,
+  type EventItem,
   type Link,
   type Project,
 } from "@/data/content";
+
+function EventRow({ event }: { event: EventItem }) {
+  const details = [event.where, event.role].filter(Boolean).join(" · ");
+  return (
+    <li className="event">
+      <div className="card-head">
+        <h3>{event.name}</h3>
+        <span className={event.upcoming ? "badge" : "badge badge-muted"}>
+          {event.upcoming ? `coming up · ${event.when}` : event.when}
+        </span>
+      </div>
+      {details && <p className="where">{details}</p>}
+    </li>
+  );
+}
 
 function LinkRow({ items }: { items?: Link[] }) {
   if (!items?.length) return null;
@@ -130,20 +147,42 @@ export default function Home() {
         </section>
 
         <section aria-labelledby="events-title">
-          <h2 id="events-title">community events</h2>
-          <ol className="timeline">
-            {communityEvents.map((event) => (
-              <li key={event.name + event.when}>
-                <div className="when">{event.when}</div>
-                <div>
-                  <h3>{event.name}</h3>
-                  <p className="where">
-                    {event.where} · {event.role}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ol>
+          <h2 id="events-title">events</h2>
+          <ul className="event-list">
+            {events
+              .filter((event) => event.upcoming)
+              .map((event) => (
+                <EventRow key={event.name + event.when} event={event} />
+              ))}
+            {events
+              .filter((event) => !event.upcoming)
+              .map((event) => (
+                <EventRow key={event.name + event.when} event={event} />
+              ))}
+          </ul>
+        </section>
+
+        <section aria-labelledby="writing-title">
+          <h2 id="writing-title">writing pieces</h2>
+          {writing.length === 0 ? (
+            <div className="card-head">
+              <p className="muted-note">my first pieces are on the way.</p>
+              <span className="badge">coming up</span>
+            </div>
+          ) : (
+            <ul className="event-list">
+              {writing.map((piece) => (
+                <li key={piece.href} className="event">
+                  <div className="card-head">
+                    <h3>
+                      <a href={piece.href}>{piece.title}</a>
+                    </h3>
+                    <span className="badge badge-muted">{piece.when}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
         </section>
 
         <section aria-labelledby="love-title">

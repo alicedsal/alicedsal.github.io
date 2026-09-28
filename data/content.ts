@@ -30,19 +30,23 @@ export type Place = {
   highlights?: string[];
 };
 
-export type CommunityEvent = {
-  when: string;
+export type EventItem = {
   name: string;
-  where: string;
-  role: string;
+  when: string; // month + year, shown in the badge
+  where?: string;
+  role?: string;
+  upcoming?: boolean; // set to false (or remove) once the event has happened
 };
+
+export type WritingPiece = { title: string; when: string; href: string };
 
 export type SkillGroup = { label: string; items: string };
 
 export const profile = {
   name: "alice lourenco",
   lede: "cs student at unc-chapel hill, minor in education.",
-  status: "looking for summer 2027 internships · based in chapel hill, nc · open to relocation",
+  status:
+    "looking for summer 2027 internships and research lab positions · based in chapel hill, nc · open to relocation",
 };
 
 export const links: Link[] = [
@@ -142,21 +146,50 @@ export const globalView = {
   ] satisfies Place[],
 };
 
-// add unc events, hackathons, meetups, workshops and conferences here, newest first
-export const communityEvents: CommunityEvent[] = [
+// unc events, hackathons, meetups, workshops and conferences.
+// the page shows upcoming events first (soonest first), then past ones (newest first),
+// in the order they appear in each group below.
+export const events: EventItem[] = [
   {
-    when: "2026",
+    name: "wolfhacks 2026",
+    when: "oct 2026",
+    where: "nc state",
+    upcoming: true,
+  },
+  {
+    name: "hacknc",
+    when: "oct 2026",
+    where: "unc-chapel hill",
+    upcoming: true,
+  },
+  {
+    name: "unc research week 2026",
+    when: "oct 2026",
+    where: "unc-chapel hill",
+    role: "presenter",
+    upcoming: true,
+  },
+  {
+    name: "github universe 2026",
+    when: "oct 2026",
+    where: "fort mason, san francisco, ca",
+    upcoming: true,
+  },
+  {
     name: "inclusion summit",
+    when: "sep 2026",
     where: "appalachian state university",
     role: "presenter",
   },
   {
-    when: "2026",
-    name: "research week",
-    where: "unc-chapel hill",
-    role: "presenter",
+    name: "behring scholars conference",
+    when: "apr 2026",
+    where: "mit, boston",
   },
 ];
+
+// add published pieces here, newest first; the section says "coming up" while this is empty
+export const writing: WritingPiece[] = [];
 
 export const techAndEducation = {
   impact: { number: "23,000+", label: "students reached across brazil in 5 years" },
